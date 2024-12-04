@@ -1,0 +1,41 @@
+{
+  "version": "0.0.1",
+  "importMap": "import_map.json",
+  "nodeModulesDir": false,
+  "npmRegistry": "https://registry.npmmirror.com/",
+  "tasks": {
+    "start": "deno run --allow-read --allow-write --allow-net --allow-env --allow-sys src/app.ts",
+    "dev": "deno run --watch --allow-read --allow-write --allow-net --allow-env --allow-sys src/app.ts",
+    "test": "deno test --allow-read --allow-write --allow-net --allow-env --allow-sys __test__/index.ts",
+    "test:roadways": "deno test --allow-read --allow-write --allow-net --allow-env --allow-sys --trace-leaks __test__/roadways/index.ts",
+    "esm:add": "deno run -A https://esm.sh/v135 add",
+    "esm:update": "deno run -A https://esm.sh/v135 update",
+    "esm:remove": "deno run -A https://esm.sh/v135 remove",
+    "hi": "./tasks/hi.ts",
+    "coverage": "deno test --coverage __test__/index.ts && deno coverage --html",
+    "docker:build": "deno run -A ./tasks/docker.ts build",
+    "docker:push": "deno run -A ./tasks/docker.ts push"
+  },
+  "compilerOptions": {
+    "lib": ["dom", "deno.window", "deno.worker"],
+    "strictPropertyInitialization": false
+  },
+  "lint": {
+    "include": ["src/", "deps/*.ts", "__test__/"],
+    "exclude": ["**/temp/", "deps/", "__test__/resources/"],
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
+  },
+  "fmt": {
+    "include": ["src/", "deps/*.ts", "__test__/"],
+    "exclude": ["**/temp/", "deps/", "__test__/resources/"],
+    "indentWidth": 2,
+    "lineWidth": 120,
+    "useTabs": false,
+    "singleQuote": true
+  },
+  "test": {
+    "include": ["__test__/"]
+  }
+}
