@@ -1,15 +1,17 @@
 {
-  "imports": {
-    "/": "./",
-    "./": "./",
-    "$config": "./config.json",
-    "$deps/": "./deps/",
-    "$test/": "./__test__/",
-    "@/": "./src/",
-    "@config": "./src/config/index.ts",
-    "@types": "./src/@types/index.d.ts",
-    "reflect_metadata": "./deps/reflect_metadata/mod.ts",
-    "oak": "https://deno.land/x/oak@v17.1.2/mod.ts",
-    "denodb": "https://deno.land/x/denodb@v1.4.0/mod.ts"
-  }
+	"imports": {
+		"/": "./",
+		"./": "./",
+		"$config": "./config.json",
+		"$deps/": "./deps/",
+		"$test/": "./__test__/",
+		"@/": "./src/",
+		"@config": "./src/config/index.ts",
+		"@types": "./src/@types/index.d.ts",
+		"reflect_metadata": "./deps/reflect_metadata/mod.ts",
+		"oak": "https://deno.land/x/oak@v17.1.2/mod.ts",
+		"denodb": "https://deno.land/x/denodb@v1.4.0/mod.ts",
+		"dockerode": "npm:dockerode@4.0.4",
+		"@types/dockerode": "npm:@types/dockerode@2.5.0"
+	}
 }
