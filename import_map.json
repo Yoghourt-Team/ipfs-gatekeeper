@@ -8,10 +8,11 @@
 		"@/": "./src/",
 		"@config": "./src/config/index.ts",
 		"@types": "./src/@types/index.d.ts",
+		"@db": "./src/db/",
 		"reflect_metadata": "./deps/reflect_metadata/mod.ts",
 		"oak": "https://deno.land/x/oak@v17.1.2/mod.ts",
-		"denodb": "https://deno.land/x/denodb@v1.4.0/mod.ts",
 		"dockerode": "npm:dockerode@4.0.4",
-		"@types/dockerode": "npm:@types/dockerode@2.5.0"
+		"tar-stream": "npm:tar-stream@3.1.7",
+		"sqlite-orm": "https://deno.land/x/deno_sqlite_orm@2.0.0/mod.ts"
 	}
 }

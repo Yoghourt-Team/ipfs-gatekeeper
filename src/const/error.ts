@@ -19,6 +19,11 @@ const errors = {
 		code: 4000,
 		msg: "Container not found",
 	},
+	// 文件未授权
+	FileNotAuthorized: {
+		code: 5000,
+		msg: "File not authorized",
+	},
 } as { [key: string]: Error };
 
 export default errors;

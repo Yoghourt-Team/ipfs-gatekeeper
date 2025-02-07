@@ -33,6 +33,34 @@ export default {
 		const container = await kuboService.createAndStartContainer(params.tag);
 		setResponse(ctx, 200, container, "success");
 	},
+	getConfig: async (ctx: Context) => {
+		const kuboContainer = await kuboService.checkKuboContainer();
+		if (!kuboContainer) {
+			setError(ctx, error.ContainerNotFound);
+			return;
+		}
+
+		const config = await kuboService.getKuboConfig(kuboContainer.Id);
+		setResponse(ctx, 200, config, "success");
+	},
+	overrideConfig: async (ctx: Context) => {
+		const params = await ctx.request.body.json();
+		if (!params.id || !params.content) {
+			setError(ctx, error.ParamError);
+			return;
+		}
+
+		// 验证content是否是正确的json格式
+		try {
+			JSON.parse(params.content);
+		} catch (_err) {
+			setError(ctx, error.ParamError);
+			return;
+		}
+
+		await kuboService.overrideKuboConfig(params.id, params.content);
+		setResponse(ctx, 200, {}, "success");
+	},
 	start: async (ctx: Context) => {
 		const kuboContainer = await kuboService.checkKuboContainer();
 		if (!kuboContainer) {

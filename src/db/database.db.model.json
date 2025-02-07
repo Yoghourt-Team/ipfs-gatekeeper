@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "models": {
+    "Whitelist": {
+      "tableName": "Whitelist",
+      "columns": [
+        {
+          "defaultValue": -1,
+          "nullable": false,
+          "name": "id",
+          "type": "integer",
+          "isPrimaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "defaultValue": "",
+          "nullable": false,
+          "name": "cid",
+          "type": "string",
+          "isPrimaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "database": "main"
+    }
+  }
+}
