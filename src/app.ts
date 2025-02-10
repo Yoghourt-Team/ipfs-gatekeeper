@@ -9,7 +9,7 @@ const app = new Application();
 app.use(async (ctx, next) => {
 	try {
 		await next();
-		if (!ctx.response.body) {
+		if (!ctx.response.body && !["HEAD", "OPTIONS"].includes(ctx.request.method)) {
 			ctx.response.status = 404;
 			ctx.response.body = "Not Found";
 		}
