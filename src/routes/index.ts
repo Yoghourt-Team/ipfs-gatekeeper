@@ -44,5 +44,8 @@ router.put("/config", kuboController.overrideConfig);
 
 // 转发路由
 router.all("/kubo-proxy/(.*)", kuboController.forward);
+router.options("/kubo-proxy/(.*)", (ctx) => {
+	ctx.response.status = 200;
+});
 
 export default router;
