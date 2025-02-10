@@ -1,8 +1,16 @@
 import { Router } from "oak";
 import kuboController from "../controllers/kuboController.ts";
+import ipfsController from "../controllers/ipfsController.ts";
 import config from "@config";
 
 const router = new Router();
+
+// ipfs获取文件
+router.get("/ipfs/(.*)", ipfsController.get);
+
+router.options("/kubo-proxy/(.*)", (ctx) => {
+	ctx.response.status = 200;
+});
 
 // 验证token中间件
 router.use(async (ctx, next) => {
@@ -14,6 +22,9 @@ router.use(async (ctx, next) => {
 	}
 	await next();
 });
+
+// 转发路由
+router.all("/kubo-proxy/(.*)", kuboController.forward);
 
 // 获取镜像列表
 router.get("/images", kuboController.images);
@@ -41,11 +52,5 @@ router.get("/config", kuboController.getConfig);
 
 // 修改配置信息
 router.put("/config", kuboController.overrideConfig);
-
-// 转发路由
-router.all("/kubo-proxy/(.*)", kuboController.forward);
-router.options("/kubo-proxy/(.*)", (ctx) => {
-	ctx.response.status = 200;
-});
 
 export default router;
