@@ -2,6 +2,7 @@ import { type Context } from "oak";
 import kuboService from "@/services/kuboService.ts";
 import { setResponse, setError, checkParams } from "@/utils/index.ts";
 import error from "@/const/error.ts";
+import config from "@/config/index.ts";
 
 export default {
 	pull: async (ctx: Context) => {
@@ -105,7 +106,10 @@ export default {
 		const { method, url, headers } = request;
 
 		// 构建转发的 URL
-		const forwardUrl = new URL(url.pathname.replace(/^\/kubo-proxy/, "") + url.search, "http://localhost:5001");
+		const forwardUrl = new URL(
+			url.pathname.replace(/^\/kubo-proxy/, "") + url.search,
+			`http://${config.kuboHost}:5001`
+		);
 
 		// 构建转发请求的选项
 		const forwardRequestInit: RequestInit = {

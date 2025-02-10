@@ -44,7 +44,7 @@ export default {
 		const { method, url, headers } = request;
 
 		// 构建转发的 URL
-		const forwardUrl = new URL(url.pathname, "http://localhost:8080");
+		const forwardUrl = new URL(url.pathname, `http://${config.kuboHost}:8080`);
 
 		// 构建转发请求的选项
 		const forwardRequestInit: RequestInit = {

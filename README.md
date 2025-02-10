@@ -30,6 +30,7 @@
 
 ## 安装
 
+修改.env.example为.env，并修改.env文件中的配置。
 在项目的根目录下执行以下命令
 
 1. ```docker build -t ipfs-gatekeeper .```
@@ -52,7 +53,7 @@
 - 响应体: 镜像列表的 JSON 对象
 
 #### 删除镜像
-请求方法: ```GET```
+请求方法: ```DELETE```
 
 路径: ```/remove-image```
 
