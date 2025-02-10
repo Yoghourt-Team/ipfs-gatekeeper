@@ -1,5 +1,8 @@
 # 使用 Deno 官方提供的轻量级镜像
-FROM denoland/deno:alpine-2.0.4
+FROM denoland/deno:alpine-2.1.1
+
+# 更新包列表并安装 git
+RUN apk add --no-cache git
 
 # 设置工作目录
 WORKDIR /app
@@ -13,7 +16,7 @@ ENV NPM_CONFIG_REGISTRY https://registry.npmmirror.com/
 RUN deno cache --reload --unstable --importmap=import_map.json *.ts */*.ts
 
 # 暴露应用服务端口（假设应用在 8000 端口上运行）
-EXPOSE 8080
+EXPOSE 8000
 
 # 使用 deno task 启动应用
 CMD ["task", "start"]
